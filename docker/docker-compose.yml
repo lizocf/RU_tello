@@ -1,0 +1,51 @@
+version: '3'
+
+# inspired by Cooper's IGVC selfdrive docker structure! https://github.com/CooperUnion/selfdrive.git
+
+services:
+  master:
+    build: master/.
+    container_name: master
+    tty: true
+    environment:
+        - 'ROS_HOSTNAME=master'
+        - 'ROS_MASTER_URI=http://master:11311'
+        - 'DISPLAY=$DISPLAY'
+        - 'QT_X11_NO_MITSHM=1'
+    ports:
+        - '11311:11311'
+    volumes:
+        - '/tmp/.X11-unix:/tmp/.X11-unix'
+    restart: unless-stopped
+    command: stdbuf -o L roscore
+
+  orbslam3:
+    build: ORB-SLAM3/.
+    container_name: orbslam3
+    tty: true
+    privileged: true # I added privileged to get xhost working, though I don't think this is the direct solution. export DISPLAY=:0, xhost +si:localuser:root business.. etc etc
+    environment:
+        - 'ROS_HOSTNAME=orbslam3'
+        - 'ROS_MASTER_URI=http://master:11311'
+        - 'DISPLAY=$DISPLAY'
+        - 'QT_X11_NO_MITSHM=1'
+    volumes:
+        - '/tmp/.X11-unix:/tmp/.X11-unix'
+        - './ORB-SLAM3/ORB_SLAM3_NOETIC:/app/ros_ws/src/orbslam3'
+    depends_on:
+        - master
+  
+  rviz:
+    build: rviz/.
+    container_name: rviz
+    tty: true
+    privileged: true
+    environment:
+        - 'ROS_HOSTNAME=rviz'
+        - 'ROS_MASTER_URI=http://master:11311'
+        - 'DISPLAY=$DISPLAY'
+        - 'QT_X11_NO_MITSHM=1'
+    volumes:
+        - '/tmp/.X11-unix:/tmp/.X11-unix'
+    depends_on:
+        - master
