@@ -1,0 +1,38 @@
+version: '3'
+
+# inspired by Cooper's IGVC selfdrive docker structure! https://github.com/CooperUnion/selfdrive.git
+
+services:
+  master:
+    build: master/.
+    container_name: master
+    tty: true
+    environment:
+        - 'ROS_HOSTNAME=master'
+        - 'ROS_MASTER_URI=http://master:11311'
+        - 'DISPLAY=$DISPLAY'
+        - 'QT_X11_NO_MITSHM=1'
+    ports:
+        - '11311:11311'
+    volumes:
+        - '/tmp/.X11-unix:/tmp/.X11-unix'
+    restart: unless-stopped
+    command: stdbuf -o L roscore
+
+  tello:
+    build: tello/.
+    container_name: tello
+    tty: true
+    privileged: true
+    environment:
+        - 'ROS_HOSTNAME=tello'
+        - 'ROS_MASTER_URI=http://master:11311'
+        - 'DISPLAY=$DISPLAY'
+        - 'QT_X11_NO_MITSHM=1'
+    ports:
+        - '8889:8889'
+    volumes:
+        - '/tmp/.X11-unix:/tmp/.X11-unix'
+        - './tello:/app/ros_ws/src'
+    depends_on:
+        - master
