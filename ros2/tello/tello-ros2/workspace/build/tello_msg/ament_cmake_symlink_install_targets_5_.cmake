@@ -1,0 +1,1 @@
+ament_cmake_symlink_install_targets("TARGET_FILES" "/app/ros_ws/src/tello-ros2/workspace/build/tello_msg/rosidl_generator_py/tello_msg/libtello_msg__python.so" "TARGETS" "tello_msg__python" "ARCHIVE_DESTINATION" "lib" "LIBRARY_DESTINATION" "lib" "RUNTIME_DESTINATION" "bin")

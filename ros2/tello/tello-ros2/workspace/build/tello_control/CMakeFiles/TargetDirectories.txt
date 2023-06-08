@@ -1,0 +1,10 @@
+/app/ros_ws/src/tello-ros2/workspace/build/tello_control/CMakeFiles/install/strip.dir
+/app/ros_ws/src/tello-ros2/workspace/build/tello_control/CMakeFiles/install/local.dir
+/app/ros_ws/src/tello-ros2/workspace/build/tello_control/CMakeFiles/install.dir
+/app/ros_ws/src/tello-ros2/workspace/build/tello_control/CMakeFiles/list_install_components.dir
+/app/ros_ws/src/tello-ros2/workspace/build/tello_control/CMakeFiles/rebuild_cache.dir
+/app/ros_ws/src/tello-ros2/workspace/build/tello_control/CMakeFiles/edit_cache.dir
+/app/ros_ws/src/tello-ros2/workspace/build/tello_control/CMakeFiles/test.dir
+/app/ros_ws/src/tello-ros2/workspace/build/tello_control/CMakeFiles/tello_control.dir
+/app/ros_ws/src/tello-ros2/workspace/build/tello_control/CMakeFiles/tello_control_uninstall.dir
+/app/ros_ws/src/tello-ros2/workspace/build/tello_control/CMakeFiles/uninstall.dir

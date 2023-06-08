@@ -1,0 +1,2 @@
+Invoking command in '/app/ros_ws/src/tello-ros2/build/tello_control': CMAKE_PREFIX_PATH=/opt/ros/foxy /usr/bin/cmake /app/ros_ws/src/tello-ros2/workspace/src/tello_control -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/app/ros_ws/src/tello-ros2/install/tello_control
+Invoked command in '/app/ros_ws/src/tello-ros2/build/tello_control' returned '-2': CMAKE_PREFIX_PATH=/opt/ros/foxy /usr/bin/cmake /app/ros_ws/src/tello-ros2/workspace/src/tello_control -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/app/ros_ws/src/tello-ros2/install/tello_control

@@ -1,0 +1,27 @@
+[3.784s] Invoking command in '/app/ros_ws/src/tello-ros2/workspace/build/tello': AMENT_PREFIX_PATH=/app/ros_ws/src/tello-ros2/workspace/install/tello_msg:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/app/ros_ws/src/tello-ros2/workspace/install/tello_msg LD_LIBRARY_PATH=/app/ros_ws/src/tello-ros2/workspace/install/tello_msg/lib:${LD_LIBRARY_PATH} PYTHONPATH=/app/ros_ws/src/tello-ros2/workspace/build/tello/prefix_override:/app/ros_ws/src/tello-ros2/workspace/install/tello/lib/python3.8/site-packages:/app/ros_ws/src/tello-ros2/workspace/install/tello_msg/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py develop --editable --build-directory /app/ros_ws/src/tello-ros2/workspace/build/tello/build --no-deps install_data
+[5.356s] running develop
+[5.681s] running egg_info
+[5.683s] creating tello.egg-info
+[5.685s] writing tello.egg-info/PKG-INFO
+[5.697s] writing dependency_links to tello.egg-info/dependency_links.txt
+[5.705s] writing entry points to tello.egg-info/entry_points.txt
+[5.713s] writing requirements to tello.egg-info/requires.txt
+[5.717s] writing top-level names to tello.egg-info/top_level.txt
+[5.742s] writing manifest file 'tello.egg-info/SOURCES.txt'
+[5.879s] reading manifest file 'tello.egg-info/SOURCES.txt'
+[5.969s] writing manifest file 'tello.egg-info/SOURCES.txt'
+[6.212s] running build_ext
+[6.216s] Creating /app/ros_ws/src/tello-ros2/workspace/install/tello/lib/python3.8/site-packages/site.py
+[6.293s] Creating /app/ros_ws/src/tello-ros2/workspace/install/tello/lib/python3.8/site-packages/tello.egg-link (link to .)
+[6.319s] Installing tello script to /app/ros_ws/src/tello-ros2/workspace/install/tello/lib/tello
+[6.343s] 
+[6.344s] Installed /app/ros_ws/src/tello-ros2/workspace/build/tello
+[6.347s] running install_data
+[6.356s] creating /app/ros_ws/src/tello-ros2/workspace/install/tello/share/ament_index
+[6.359s] creating /app/ros_ws/src/tello-ros2/workspace/install/tello/share/ament_index/resource_index
+[6.363s] creating /app/ros_ws/src/tello-ros2/workspace/install/tello/share/ament_index/resource_index/packages
+[6.383s] copying resource/tello -> /app/ros_ws/src/tello-ros2/workspace/install/tello/share/ament_index/resource_index/packages
+[6.422s] copying package.xml -> /app/ros_ws/src/tello-ros2/workspace/install/tello/share/tello
+[6.459s] copying resource/ost.txt -> /app/ros_ws/src/tello-ros2/workspace/install/tello/share/tello
+[6.500s] copying resource/ost.yaml -> /app/ros_ws/src/tello-ros2/workspace/install/tello/share/tello
+[6.548s] Invoked command in '/app/ros_ws/src/tello-ros2/workspace/build/tello' returned '0': AMENT_PREFIX_PATH=/app/ros_ws/src/tello-ros2/workspace/install/tello_msg:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/app/ros_ws/src/tello-ros2/workspace/install/tello_msg LD_LIBRARY_PATH=/app/ros_ws/src/tello-ros2/workspace/install/tello_msg/lib:${LD_LIBRARY_PATH} PYTHONPATH=/app/ros_ws/src/tello-ros2/workspace/build/tello/prefix_override:/app/ros_ws/src/tello-ros2/workspace/install/tello/lib/python3.8/site-packages:/app/ros_ws/src/tello-ros2/workspace/install/tello_msg/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py develop --editable --build-directory /app/ros_ws/src/tello-ros2/workspace/build/tello/build --no-deps install_data

@@ -1,0 +1,68 @@
+[0.072s] Invoking command in '/app/ros_ws/src/tello-ros2/workspace/build/tello_control': CMAKE_PREFIX_PATH=/opt/ros/foxy /usr/bin/cmake /app/ros_ws/src/tello-ros2/workspace/src/tello_control -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/app/ros_ws/src/tello-ros2/workspace/install/tello_control
+[0.412s] -- The C compiler identification is GNU 9.4.0
+[0.735s] -- The CXX compiler identification is GNU 9.4.0
+[0.828s] -- Check for working C compiler: /usr/bin/cc
+[1.608s] -- Check for working C compiler: /usr/bin/cc -- works
+[1.618s] -- Detecting C compiler ABI info
+[2.413s] -- Detecting C compiler ABI info - done
+[2.457s] -- Detecting C compile features
+[2.459s] -- Detecting C compile features - done
+[2.562s] -- Check for working CXX compiler: /usr/bin/c++
+[3.403s] -- Check for working CXX compiler: /usr/bin/c++ -- works
+[3.415s] -- Detecting CXX compiler ABI info
+[4.236s] -- Detecting CXX compiler ABI info - done
+[4.284s] -- Detecting CXX compile features
+[4.286s] -- Detecting CXX compile features - done
+[4.415s] -- Found OpenCV version 4.2.0
+[4.419s] -- Found ament_cmake: 0.9.11 (/opt/ros/foxy/share/ament_cmake/cmake)
+[4.450s] -- Found PythonInterp: /usr/bin/python3 (found suitable version "3.8.10", minimum required is "3") 
+[4.453s] -- Using PYTHON_EXECUTABLE: /usr/bin/python3
+[4.758s] -- Override CMake install command with custom implementation using symlinks instead of copying resources
+[4.965s] -- Found rclcpp: 2.4.2 (/opt/ros/foxy/share/rclcpp/cmake)
+[5.020s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[5.027s] -- Found rosidl_adapter: 1.3.0 (/opt/ros/foxy/share/rosidl_adapter/cmake)
+[5.141s] -- Found OpenSSL: /usr/lib/x86_64-linux-gnu/libcrypto.so (found version "1.1.1f")  
+[5.245s] -- Found FastRTPS: /opt/ros/foxy/include  
+[5.377s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[5.430s] -- Found rmw_implementation_cmake: 1.0.4 (/opt/ros/foxy/share/rmw_implementation_cmake/cmake)
+[5.433s] -- Using RMW implementation 'rmw_fastrtps_cpp' as default
+[5.514s] -- Looking for pthread.h
+[6.312s] -- Looking for pthread.h - found
+[6.332s] -- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+[7.155s] -- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Failed
+[7.163s] -- Looking for pthread_create in pthreads
+[7.844s] -- Looking for pthread_create in pthreads - not found
+[7.853s] -- Looking for pthread_create in pthread
+[8.638s] -- Looking for pthread_create in pthread - found
+[8.647s] -- Found Threads: TRUE  
+[8.787s] -- Found geometry_msgs: 2.0.5 (/opt/ros/foxy/share/geometry_msgs/cmake)
+[9.927s] -- Configuring done
+[10.464s] -- Generating done
+[10.600s] -- Build files have been written to: /app/ros_ws/src/tello-ros2/workspace/build/tello_control
+[10.610s] Invoked command in '/app/ros_ws/src/tello-ros2/workspace/build/tello_control' returned '0': CMAKE_PREFIX_PATH=/opt/ros/foxy /usr/bin/cmake /app/ros_ws/src/tello-ros2/workspace/src/tello_control -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/app/ros_ws/src/tello-ros2/workspace/install/tello_control
+[10.629s] Invoking command in '/app/ros_ws/src/tello-ros2/workspace/build/tello_control': CMAKE_PREFIX_PATH=/opt/ros/foxy /usr/bin/cmake --build /app/ros_ws/src/tello-ros2/workspace/build/tello_control -- -j16 -l16
+[10.984s] [35m[1mScanning dependencies of target tello_control[0m
+[13.347s] [ 50%] [32mBuilding CXX object CMakeFiles/tello_control.dir/src/main.cpp.o[0m
+[20.653s] [100%] [32m[1mLinking CXX executable tello_control[0m
+[29.826s] [100%] Built target tello_control
+[29.869s] Invoked command in '/app/ros_ws/src/tello-ros2/workspace/build/tello_control' returned '0': CMAKE_PREFIX_PATH=/opt/ros/foxy /usr/bin/cmake --build /app/ros_ws/src/tello-ros2/workspace/build/tello_control -- -j16 -l16
+[29.961s] Invoking command in '/app/ros_ws/src/tello-ros2/workspace/build/tello_control': CMAKE_PREFIX_PATH=/opt/ros/foxy /usr/bin/cmake --install /app/ros_ws/src/tello-ros2/workspace/build/tello_control
+[29.985s] -- Install configuration: ""
+[30.001s] -- Execute custom install script
+[30.038s] -- Symlinking: /app/ros_ws/src/tello-ros2/workspace/install/tello_control/lib/tello_control/tello_control
+[30.133s] -- Symlinking: /app/ros_ws/src/tello-ros2/workspace/install/tello_control/share/ament_index/resource_index/package_run_dependencies/tello_control
+[30.232s] -- Symlinking: /app/ros_ws/src/tello-ros2/workspace/install/tello_control/share/ament_index/resource_index/parent_prefix_path/tello_control
+[30.362s] -- Symlinking: /app/ros_ws/src/tello-ros2/workspace/install/tello_control/share/tello_control/environment/ament_prefix_path.sh
+[30.432s] -- Symlinking: /app/ros_ws/src/tello-ros2/workspace/install/tello_control/share/tello_control/environment/ament_prefix_path.dsv
+[30.499s] -- Symlinking: /app/ros_ws/src/tello-ros2/workspace/install/tello_control/share/tello_control/environment/path.sh
+[30.573s] -- Symlinking: /app/ros_ws/src/tello-ros2/workspace/install/tello_control/share/tello_control/environment/path.dsv
+[30.637s] -- Symlinking: /app/ros_ws/src/tello-ros2/workspace/install/tello_control/share/tello_control/local_setup.bash
+[30.698s] -- Symlinking: /app/ros_ws/src/tello-ros2/workspace/install/tello_control/share/tello_control/local_setup.sh
+[30.762s] -- Symlinking: /app/ros_ws/src/tello-ros2/workspace/install/tello_control/share/tello_control/local_setup.zsh
+[30.828s] -- Symlinking: /app/ros_ws/src/tello-ros2/workspace/install/tello_control/share/tello_control/local_setup.dsv
+[30.881s] -- Symlinking: /app/ros_ws/src/tello-ros2/workspace/install/tello_control/share/tello_control/package.dsv
+[30.961s] -- Symlinking: /app/ros_ws/src/tello-ros2/workspace/install/tello_control/share/ament_index/resource_index/packages/tello_control
+[31.069s] -- Symlinking: /app/ros_ws/src/tello-ros2/workspace/install/tello_control/share/tello_control/cmake/tello_controlConfig.cmake
+[31.139s] -- Symlinking: /app/ros_ws/src/tello-ros2/workspace/install/tello_control/share/tello_control/cmake/tello_controlConfig-version.cmake
+[31.206s] -- Symlinking: /app/ros_ws/src/tello-ros2/workspace/install/tello_control/share/tello_control/package.xml
+[31.244s] Invoked command in '/app/ros_ws/src/tello-ros2/workspace/build/tello_control' returned '0': CMAKE_PREFIX_PATH=/opt/ros/foxy /usr/bin/cmake --install /app/ros_ws/src/tello-ros2/workspace/build/tello_control
