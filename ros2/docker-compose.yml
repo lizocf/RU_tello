@@ -22,6 +22,7 @@ services:
   tello:
     build: tello/.
     container_name: tello
+    network_mode: "host"
     tty: true
     privileged: true
     environment:
@@ -31,8 +32,33 @@ services:
         - 'QT_X11_NO_MITSHM=1'
     ports:
         - '8889:8889'
+        - '8890:8890'
+        - '11111:11111'
     volumes:
         - '/tmp/.X11-unix:/tmp/.X11-unix'
         - './tello:/app/ros_ws/src'
-    depends_on:
-        - master
+#    depends_on:
+#        - master
+
+  tello2:
+    build: tello_ros/.
+    container_name: tello2
+    network_mode: "host"
+    tty: true
+    privileged: true
+    environment:
+        - 'ROS_HOSTNAME=tello'
+        - 'DISPLAY=$DISPLAY'
+        - 'QT_X11_NO_MITSHM=1'
+    ports:
+        - '8889:8889'
+        - '8890:8890'
+        - '11111:11111'
+        - '38065:38065'
+    volumes:
+        - '/tmp/.X11-unix:/tmp/.X11-unix'
+        - './tello_ros/tello_driver:/app/ros_ws/src/tello_driver'
+        - './tello_ros/tello_gazebo:/app/ros_ws/src/tello_gazebo'
+        - './tello_ros/tello_msgs:/app/ros_ws/src/tello_msgs'
+#    depends_on:
+#        - master
