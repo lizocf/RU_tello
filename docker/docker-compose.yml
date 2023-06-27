@@ -35,6 +35,41 @@ services:
     depends_on:
         - master
   
+  tellopy:
+    build: TelloPy/.
+    container_name: tellopy
+    tty: true
+    network_mode: host
+    privileged: true
+    environment:
+        - 'ROS_HOSTNAME=tellopy'
+        - 'ROS_MASTER_URI=http://master:11311'
+        - 'DISPLAY=$DISPLAY'
+        - 'QT_X11_NO_MITSHM=1'
+    volumes:
+        - '/tmp/.X11-unix:/tmp/.X11-unix'
+        - './TelloPy:/app/ros_ws/src/TelloPy'
+    depends_on:
+        - master
+
+  tello_ros:
+    build: tello_ros/.
+    container_name: tello_ros
+    tty: true
+    network_mode: host
+    privileged: true
+    environment:
+        - 'ROS_HOSTNAME=tello_ros'
+        - 'ROS_MASTER_URI=http://master:11311'
+        - 'DISPLAY=$DISPLAY'
+        - 'QT_X11_NO_MITSHM=1'
+    volumes:
+        - '/tmp/.X11-unix:/tmp/.X11-unix'
+        - './tello_ros:/app/ros_ws/src/tello_ros'
+    depends_on:
+        - master
+
+  
   rviz:
     build: rviz/.
     container_name: rviz
