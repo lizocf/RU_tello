@@ -56,7 +56,7 @@ COPY ./alias.sh /
 
 RUN echo "source /alias.sh" >> ~/.bashrc
 
-RUN echo "export ROS_PACKAGE_PATH=${ROS_PACKAGE_PATH}:ORB-SLAM3/ORB_SLAM3_NOETIC/Examples/ROS" >> ~/.bashrc
+RUN echo "export ROS_PACKAGE_PATH=${ROS_PACKAGE_PATH}:orbslam3/Examples/ROS" >> ~/.bashrc
 
 ENTRYPOINT ["/entrypoint.sh"]
 CMD ["bash"]

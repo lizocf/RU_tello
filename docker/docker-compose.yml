@@ -7,6 +7,7 @@ services:
     build: master/.
     container_name: master
     tty: true
+    privileged: true
     environment:
         - 'ROS_HOSTNAME=master'
         - 'ROS_MASTER_URI=http://master:11311'
@@ -19,68 +20,75 @@ services:
     restart: unless-stopped
     command: stdbuf -o L roscore
 
-  orbslam3:
-    build: ORB-SLAM3/.
-    container_name: orbslam3
+  tello-ros:
+    build: tello-ros/.
+    container_name: tello-ros
     tty: true
-    privileged: true # I added privileged to get xhost working, though I don't think this is the direct solution. export DISPLAY=:0, xhost +si:localuser:root business.. etc etc
+    network_mode: host
+    privileged: true
     environment:
-        - 'ROS_HOSTNAME=orbslam3'
+        - 'ROS_HOSTNAME=tello-ros'
         - 'ROS_MASTER_URI=http://master:11311'
         - 'DISPLAY=$DISPLAY'
         - 'QT_X11_NO_MITSHM=1'
     volumes:
         - '/tmp/.X11-unix:/tmp/.X11-unix'
+        - './tello-ros:/app/ros_ws/src'
         - './ORB-SLAM3/ORB_SLAM3_NOETIC:/app/ros_ws/src/orbslam3'
     depends_on:
         - master
-  
-  tellopy:
-    build: TelloPy/.
-    container_name: tellopy
-    tty: true
-    network_mode: host
-    privileged: true
-    environment:
-        - 'ROS_HOSTNAME=tellopy'
-        - 'ROS_MASTER_URI=http://master:11311'
-        - 'DISPLAY=$DISPLAY'
-        - 'QT_X11_NO_MITSHM=1'
-    volumes:
-        - '/tmp/.X11-unix:/tmp/.X11-unix'
-        - './TelloPy:/app/ros_ws/src/TelloPy'
-    depends_on:
-        - master
 
-  tello_ros:
-    build: tello_ros/.
-    container_name: tello_ros
-    tty: true
-    network_mode: host
-    privileged: true
-    environment:
-        - 'ROS_HOSTNAME=tello_ros'
-        - 'ROS_MASTER_URI=http://master:11311'
-        - 'DISPLAY=$DISPLAY'
-        - 'QT_X11_NO_MITSHM=1'
-    volumes:
-        - '/tmp/.X11-unix:/tmp/.X11-unix'
-        - './tello_ros:/app/ros_ws/src/tello_ros'
-    depends_on:
-        - master
+#   orbslam3:
+#     build: ORB-SLAM3/.
+#     container_name: orbslam3
+#     tty: true
+#     network_mode: host
+#     privileged: true # I added privileged to get xhost working, though I don't think this is the direct solution. export DISPLAY=:0, xhost +si:localuser:root business.. etc etc
+#     environment:
+#         - 'ROS_HOSTNAME=orbslam3'
+#         - 'ROS_MASTER_URI=http://master:11311'
+#         - 'DISPLAY=$DISPLAY'
+#         - 'QT_X11_NO_MITSHM=1'
+#     volumes:
+#         - '/tmp/.X11-unix:/tmp/.X11-unix'
+#         - './ORB-SLAM3/ORB_SLAM3_NOETIC:/app/ros_ws/src/orbslam3'
+#     depends_on:
+#         - master
+  
+
+## SCRATCH THIS DOING EVERYTHING IN ONE CONTAINER LOL ##
+
+#   tellopy:
+#     build: TelloPy/.
+#     container_name: tellopy
+#     tty: true
+#     network_mode: host
+#     privileged: true
+#     environment:
+#         - 'ROS_HOSTNAME=tellopy'
+#         - 'ROS_MASTER_URI=http://master:11311'
+#         - 'DISPLAY=$DISPLAY'
+#         - 'QT_X11_NO_MITSHM=1'
+#     volumes:
+#         - '/tmp/.X11-unix:/tmp/.X11-unix'
+#         - './TelloPy:/app/ros_ws/src/TelloPy'
+#     depends_on:
+#         - master
+
+
 
   
-  rviz:
-    build: rviz/.
-    container_name: rviz
-    tty: true
-    privileged: true
-    environment:
-        - 'ROS_HOSTNAME=rviz'
-        - 'ROS_MASTER_URI=http://master:11311'
-        - 'DISPLAY=$DISPLAY'
-        - 'QT_X11_NO_MITSHM=1'
-    volumes:
-        - '/tmp/.X11-unix:/tmp/.X11-unix'
-    depends_on:
-        - master
+#   rviz:
+#     build: rviz/.
+#     container_name: rviz
+#     tty: true
+#     privileged: true
+#     environment:
+#         - 'ROS_HOSTNAME=rviz'
+#         - 'ROS_MASTER_URI=http://master:11311'
+#         - 'DISPLAY=$DISPLAY'
+#         - 'QT_X11_NO_MITSHM=1'
+#     volumes:
+#         - '/tmp/.X11-unix:/tmp/.X11-unix'
+#     depends_on:
+#         - master
