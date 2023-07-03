@@ -15,15 +15,16 @@ RUN apt update && apt install -y \
 RUN apt-get update && apt-get install -y \
     ros-noetic-catkin \
     ros-noetic-camera-info-manager \
+    ros-noetic-joy \
     python3-catkin-tools \
     python3-pip \
-    libx264-dev
+    libx264-dev 
     # ros-noetic-camera-info-manager-py <- solved using a very scrappy method
 
 RUN apt update && apt install -y \
     ros-noetic-rqt ros-noetic-rqt-common-plugins ros-noetic-ros-tutorials \
     ros-noetic-geometry-tutorials ros-noetic-rviz ros-noetic-rosbash ros-noetic-rqt-tf-tree \
-    ros-noetic-image-transport-plugins
+    ros-noetic-image-transport-plugins ros-noetic-cv-bridge
 
 RUN mkdir -p ros_ws/src
 
@@ -50,7 +51,24 @@ RUN pip install opencv-python
 # eigen eigen eigen
 RUN apt install -y \    
         libeigen3-dev \
-        libpython3.9-dev
+        libpython3.9-dev 
+
+## PACKNET_SFM DEPENDENCIES ##
+
+RUN apt-get install -y \
+    # python3-pip \
+    python3-yaml \
+    python3-dev \
+    python3-numpy \
+    git
+
+RUN pip3 install yacs matplotlib termcolor tqdm wandb
+
+# long runtime #
+RUN pip3 install torchvision
+
+# RUN cd ros_ws/src &&\
+#     git clone -b noetic https://github.com/ros-perception/vision_opencv.git
 
 RUN cd ros_ws &&\
     source /opt/ros/noetic/setup.bash &&\ 

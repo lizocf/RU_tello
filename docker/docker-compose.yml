@@ -37,6 +37,18 @@ services:
         - './ORB-SLAM3/ORB_SLAM3_NOETIC:/app/ros_ws/src/orbslam3'
     depends_on:
         - master
+    # ports:
+    #     - 8889:8889
+    #     - 8890:8890
+    #     - 11111:11111
+    #     - 6038:6038
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
 
   packnet:
     build: packnet_sfm_ros/.
@@ -53,6 +65,13 @@ services:
         - './packnet_sfm_ros:/app/packnet_ws/src/packnet_sfm_ros'
     depends_on:
         - master
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
 
 
 #   orbslam3:
