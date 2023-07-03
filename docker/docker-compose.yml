@@ -38,6 +38,23 @@ services:
     depends_on:
         - master
 
+  packnet:
+    build: packnet_sfm_ros/.
+    container_name: packnet
+    tty: true
+    privileged: true
+    environment:
+        - 'ROS_HOSTNAME=packnet'
+        - 'ROS_MASTER_URI=http://master:11311'
+        - 'DISPLAY=$DISPLAY'
+        - 'QT_X11_NO_MITSHM=1'
+    volumes:
+        - '/tmp/.X11-unix:/tmp/.X11-unix'
+        - './packnet_sfm_ros:/app/packnet_ws/src/packnet_sfm_ros'
+    depends_on:
+        - master
+
+
 #   orbslam3:
 #     build: ORB-SLAM3/.
 #     container_name: orbslam3
