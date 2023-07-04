@@ -35,6 +35,7 @@ services:
         - '/tmp/.X11-unix:/tmp/.X11-unix'
         - './tello-ros:/app/ros_ws/src'
         - './ORB-SLAM3/ORB_SLAM3_NOETIC:/app/ros_ws/src/orbslam3'
+        - './packnet_sfm_ros:/app/packnet_ws/src/packnet_sfm_ros'
     depends_on:
         - master
     # ports:

@@ -70,6 +70,13 @@ RUN pip3 install torchvision
 # RUN cd ros_ws/src &&\
 #     git clone -b noetic https://github.com/ros-perception/vision_opencv.git
 
+RUN mkdir -p packnet_ws/src
+
+RUN cd packnet_ws &&\
+    source /opt/ros/noetic/setup.bash &&\ 
+    rosdep install --from-paths src --ignore-src -r -y  &&\
+    catkin_make -DCATKIN_ENABLE_TESTING=0 -DCMAKE_BUILD_TYPE=Release
+
 RUN cd ros_ws &&\
     source /opt/ros/noetic/setup.bash &&\ 
     rosdep install --from-paths src --ignore-src -r -y  &&\

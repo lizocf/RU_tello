@@ -25,8 +25,21 @@ change python/python2 instances to python3
 
 # orbslam3
     - Pangolin
-    
+
+# build Pangolin
+# RUN cd ORB_SLAM3_NOETIC/Pangolin &&\
+#     mkdir build &&\
+#     cd build &&\
+#     cmake .. &&\
+#     sudo make install
+
+# build Thirdparty libs and ORB-SLAM3
+# RUN cd ORB_SLAM3_NOETIC &&\
+#     chmod +x build.sh &&\
+#     ./build.sh
+
 (ORB-SLAM3: Current Frame:1886): dbind-WARNING **: 15:19:33.918: Couldn't connect to accessibility bus: Failed to connect to socket /run/user/1000/at-spi/bus_1: No such file or directory
+
 
 COMMANDS:
 
