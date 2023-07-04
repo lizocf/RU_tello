@@ -66,7 +66,10 @@ ERROR: rosrun not found (???)
 Solution: sudo apt install --reinstall ros-noetic-rosbash
 
 ERROR: /usr/lib/python3/dist-packages/requests/__init__.py:89: RequestsDependencyWarning: urllib3 (2.0.3) or chardet (3.0.4) doesn't match a supported version! warnings.warn("urllib3 ({}) or chardet ({}) doesn't match a supported "
-Solution: pip install -U urllib3 requests
+Solution: pip install -U urllib3
+
+ERROR: catkin build error
+Solution: catkin build -DSETUPTOOLS_DEB_LAYOUT=OFF
 
 ```
 

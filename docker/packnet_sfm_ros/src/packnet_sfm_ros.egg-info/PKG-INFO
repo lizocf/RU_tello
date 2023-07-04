@@ -1,0 +1,9 @@
+Metadata-Version: 2.1
+Name: packnet-sfm-ros
+Version: 0.0.0
+Summary: The packnet_sfm package
+Author: 
+Maintainer: Jedsadakorn Yonchorhor
+Maintainer-email: j.yonchor@kaist.ac.kr
+License: TODO
+License-File: LICENSE.md
