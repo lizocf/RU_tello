@@ -34,8 +34,12 @@ services:
     volumes:
         - '/tmp/.X11-unix:/tmp/.X11-unix'
         - './tello-ros:/app/ros_ws/src'
+        # - './noetic-fast-planner:/app/ros_ws/src'
+        # - './Fast-Planner:/app/ros_ws/src/Fast-Planner'
+        - './Fast-Planner-for-ubuntu20.04:/app/ros_ws/src/Fast-Planner'
         - './ORB-SLAM3/ORB_SLAM3_NOETIC:/app/ros_ws/src/orbslam3'
         - './packnet_sfm_ros:/app/packnet_ws/src/packnet_sfm_ros'
+        # - '/usr/lib/cuda:/usr/lib/cuda'
     depends_on:
         - master
     # ports:
@@ -49,7 +53,11 @@ services:
           devices:
             - driver: nvidia
               count: 1
-              capabilities: [gpu]
+              capabilities:
+                - gpu
+                - utility # nvidia-smi
+                - compute # CUDA. Required to avoid "CUDA version: N/A"
+                - video   # NVDEC/NVENC. For instance to use a hardware accelerated ffmpeg. Skip it if you don't need it
 
   packnet:
     build: packnet_sfm_ros/.

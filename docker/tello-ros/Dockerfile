@@ -1,5 +1,4 @@
 FROM ros:noetic-ros-base
-
 SHELL ["/bin/bash", "-c"]
 
 ARG DEBIAN_FRONTEND=noninteractive
@@ -53,6 +52,7 @@ RUN apt install -y \
         libeigen3-dev \
         libpython3.9-dev 
 
+
 ## PACKNET_SFM DEPENDENCIES ##
 
 RUN apt-get install -y \
@@ -66,6 +66,21 @@ RUN pip3 install yacs matplotlib termcolor tqdm wandb
 
 # long runtime #
 RUN pip3 install torchvision
+
+## FAST-PLANNER DEPENDENCIES ##
+
+RUN apt-get install -y \
+        libarmadillo-dev \
+        ros-noetic-pcl*
+
+# RUN cd ros_ws/src &&\
+#     git clone https://github.com/stevengj/nlopt.git &&\
+#     cd nlopt &&\
+#     mkdir -p build &&\
+#     cd build &&\
+#     cmake .. &&\
+#     make &&\
+#     make install
 
 # RUN cd ros_ws/src &&\
 #     git clone -b noetic https://github.com/ros-perception/vision_opencv.git
@@ -92,7 +107,6 @@ RUN echo "export ROS_PACKAGE_PATH=${ROS_PACKAGE_PATH}:ORB-SLAM3/ORB_SLAM3_NOETIC
 
 ENTRYPOINT ["/entrypoint.sh"]
 CMD ["bash"]
-
 # see https://github.com/anqixu/tello_driver for install info
 
 # if all dependency issues fail, resort to rosdep install --from-paths . -i --rosdistro noetic :)
