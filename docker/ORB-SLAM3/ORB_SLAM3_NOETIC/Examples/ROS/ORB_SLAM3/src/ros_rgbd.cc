@@ -32,17 +32,19 @@
 
 #include"../../../include/System.h"
 
+#include "common.h"
+
 using namespace std;
 
-class ImageGrabber
-{
-public:
-    ImageGrabber(ORB_SLAM3::System* pSLAM):mpSLAM(pSLAM){}
+// class ImageGrabber
+// {
+// public:
+//     ImageGrabber(ORB_SLAM3::System* pSLAM):mpSLAM(pSLAM){}
 
-    void GrabRGBD(const sensor_msgs::ImageConstPtr& msgRGB,const sensor_msgs::ImageConstPtr& msgD);
+//     void GrabRGBD(const sensor_msgs::ImageConstPtr& msgRGB,const sensor_msgs::ImageConstPtr& msgD);
 
-    ORB_SLAM3::System* mpSLAM;
-};
+//     ORB_SLAM3::System* mpSLAM;
+// };
 
 int main(int argc, char **argv)
 {
@@ -59,9 +61,11 @@ int main(int argc, char **argv)
     // Create SLAM system. It initializes all system threads and gets ready to process frames.
     ORB_SLAM3::System SLAM(argv[1],argv[2],ORB_SLAM3::System::RGBD,true);
 
-    ImageGrabber igb(&SLAM);
+    // ImageGrabber igb(&SLAM);
 
     ros::NodeHandle nh;
+
+    ImageGrabber igb(&SLAM);
 
     message_filters::Subscriber<sensor_msgs::Image> rgb_sub(nh, "/camera/rgb/image_raw", 100);
     message_filters::Subscriber<sensor_msgs::Image> depth_sub(nh, "camera/depth_registered/image_raw", 100);
@@ -106,7 +110,17 @@ void ImageGrabber::GrabRGBD(const sensor_msgs::ImageConstPtr& msgRGB,const senso
         ROS_ERROR("cv_bridge exception: %s", e.what());
         return;
     }
-    mpSLAM->TrackRGBD(cv_ptrRGB->image,cv_ptrD->image,cv_ptrRGB->header.stamp.toSec());
+    cvTcw = mpSLAM->TrackRGBD(cv_ptrRGB->image,cv_ptrD->image,cv_ptrRGB->header.stamp.toSec());
+    
+    // publish and odom pose if not empty
+    if (!cvTcw.empty())
+    {
+        common::CreateMsg(odom_msg, poseStamped_msg, poseStamped_fast_planner_msg, poseWithCovStamped_msg, msgRGB, cvTcw);
+        mOdomPub.publish(odom_msg);
+        mPoseStampedPub.publish(poseStamped_msg);
+        mPoseStampedFastPlannerPub.publish(poseStamped_fast_planner_msg);
+        mPoseWithCovStampedPub.publish(poseWithCovStamped_msg);
+    }
 }
 
 

@@ -40,9 +40,11 @@ class DepthInference:
 
         ## Communication
         # queue_size=None to process only the last message
+        # self.pub_rgb_image = rospy.Publisher('/packnet/color/image_raw', Image, queue_size=1)
+        # self.pub_depth_image = rospy.Publisher('/packnet/depth/image_raw', Image, queue_size=1)
         self.pub_rgb_image = rospy.Publisher('/packnet/color/image_raw', Image, queue_size=1)
         self.pub_depth_image = rospy.Publisher('/packnet/depth/image_raw', Image, queue_size=1)
-
+        
         rospy.Subscriber("/camera/color/image_raw", Image, self.cb_image, queue_size=1)
 
         

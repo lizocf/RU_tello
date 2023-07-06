@@ -1,0 +1,14 @@
+<launch>
+  <arg name="vocab_path" value="Vocabulary/ORBvoc.txt" />
+  <arg name="config_path" value="Examples/Monocular/mono_tello.yaml" />
+  <arg name="save_map" value="0"/>
+
+  
+  <node name="orbslam3_mono" pkg="ORB_SLAM3" type="Mono" args="$(arg vocab_path) $(arg config_path) $(arg save_map)" output="screen">
+    <remap from="camera/image_raw" to="camera/color/image_raw" />
+
+  </node>
+
+
+
+</launch>

@@ -45,7 +45,9 @@ COMMANDS:
 
 1. rosrun image_transport republish h264 in:=/tello/image_raw out:=/camera/color/image_raw 
 
-2. rosrun ORB_SLAM3 Mono Vocabulary/ORBvoc.txt Examples/Monocular/Tello.yaml /camera/image_raw:=/camera/color/image_raw 
+2. rosrun ORB_SLAM3 Mono Vocabulary/ORBvoc.txt Examples/Monocular/mono_tello.yaml /camera/image_raw:=/camera/color/image_raw  (MONO)
+
+3. rosrun ORB_SLAM3 RGBD Vocabulary/ORBvoc.txt Examples/RGB-D/rgbd_tello.yaml /camera/rgb/image_raw:=/packnet/color/image_raw /camera/depth_registered/image_raw:=/packnet/depth/image_raw (RGB-D)
 
 # PackNet-SfM
     - CV-Bridge
@@ -104,3 +106,40 @@ cd build
 cmake ..
 make
 sudo make install
+
+
+
+
+## HOW TO RUN FR FR
+
+
+```
+## SETUP ## <> = new terminal
+docker exec -it tello-ros bash
+source-ros
+cd ros_ws/src/nlopt/build && sudo make install
+cd ../../orbslam3/Pangolin/build && sudo make install
+cd ../orbslam3 && ./build.sh
+cd ../.. && rm -rf build/ devel/ && catkin_make
+source-work
+
+
+## TELLO_DRIVER ##
+roslaunch tello_driver tello_node.launch (devel.launch for joystick commands) 
+rosrun image_transport republish h264 in:=/tello/image_raw out:=/camera/color/image_raw  <>
+
+## PACKNET FOR RGBD ##
+source-pack <>
+catkin build / catkin_make?
+rosrun packnet_sfm_ros packnet_sfm_node
+
+
+## ORBSLAM3 RGBD ##
+rosrun ORB_SLAM3 RGBD Vocabulary/ORBvoc.txt Examples/RGB-D/rgbd_tello.yaml /camera/rgb/image_raw:=/packnet/color/image_raw /camera/registered_depth/image_raw:=/packnet/depth/image_raw <>
+```
+
+## TO-DO LIST ##
+- CLEAN UP ORBSLAM FOR THE LOVE OF GOD (publish /odom and /pose topics, move ros package to front)
+- fast-planner integration !!!
+- docker comtainer clean up  !!!!!!!!!!! (tonight
+- tmux simple set up!)
