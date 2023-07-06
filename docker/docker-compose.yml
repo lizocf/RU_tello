@@ -24,7 +24,7 @@ services:
     build: tello-ros/.
     container_name: tello-ros
     tty: true
-    network_mode: host
+    # network_mode: host
     privileged: true
     environment:
         - 'ROS_HOSTNAME=tello-ros'
@@ -36,17 +36,18 @@ services:
         - './tello-ros:/app/ros_ws/src'
         # - './noetic-fast-planner:/app/ros_ws/src'
         # - './Fast-Planner:/app/ros_ws/src/Fast-Planner'
-        - './Fast-Planner-for-ubuntu20.04:/app/ros_ws/src/Fast-Planner'
+        - './Fast-Planner-Noetic:/app/ros_ws/src/Fast-Planner'
         - './ORB-SLAM3/ORB_SLAM3_NOETIC:/app/ros_ws/src/orbslam3'
         - './packnet_sfm_ros:/app/packnet_ws/src/packnet_sfm_ros'
         # - '/usr/lib/cuda:/usr/lib/cuda'
+        - '/dev/input/js0:/dev/input/js0'
     depends_on:
         - master
-    # ports:
-    #     - 8889:8889
-    #     - 8890:8890
-    #     - 11111:11111
-    #     - 6038:6038
+    ports:
+        - 8889:8889/udp
+        - 8890:8890/udp
+        - 11111:11111/udp
+        - 6038:6038/udp
     deploy:
       resources:
         reservations:

@@ -86,3 +86,21 @@ Subscriptions:                                                    │
 Services:                                                         │
  * /packnet_sfm_node/get_loggers                                  │
  * /packnet_sfm_node/set_logger_level   
+
+
+ # Fast-Planner
+
+ ISSUES:
+ - cmake error: run catkin_make -DCMAKE_CXX_STANDARD=14 OR add this to every cmake file:
+ ```
+set(CMAKE_CXX_STANDARD 14)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+```
+
+git clone https://github.com/stevengj/nlopt.git
+cd nlopt
+mkdir build
+cd build
+cmake ..
+make
+sudo make install
