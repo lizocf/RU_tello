@@ -66,7 +66,7 @@ public:
   void GrabRGBD(const sensor_msgs::ImageConstPtr &msgRGB, const sensor_msgs::ImageConstPtr &msgD);
   void GrabStereo(const sensor_msgs::ImageConstPtr &msgLeft, const sensor_msgs::ImageConstPtr &msgRight);
 
-  ORB_SLAM2::System *mpSLAM;
+  ORB_SLAM3::System *mpSLAM;
   bool do_rectify;
   cv::Mat M1l, M2l, M1r, M2r;
 

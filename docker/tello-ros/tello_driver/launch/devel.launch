@@ -2,5 +2,5 @@
 <launch>
   <include file="$(find tello_driver)/launch/tello_node.launch" />
   <include file="$(find tello_driver)/launch/joy_teleop.launch" />
-  <include file="$(find tello_driver)/launch/logger.launch" />
+  <!-- <include file="$(find tello_driver)/launch/logger.launch" /> -->
 </launch>
