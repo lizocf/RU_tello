@@ -1,7 +1,11 @@
 # RU_tello
 
 Infrastructure:
-Containers cannot connect to one ROS network, most likely due to the network_mode being set to "host" in order to connect to the Tello. Everything is running under one container (tello_ros)
+Containers cannot connect to one ROS network, most likely due to the network_mode being set to "host" in order to connect to the Tello. Everything is running under one container (tello_ros).
+build container by running: ./quick-start.sh clean
+
+# MISC ISSUES
+- if xbox controller not connecting via bluetooth, go to windows machine and connect there first. Then go to ubuntu machine and it should show up.
 
 # tello-driver
     - camera_info_manager_py
@@ -26,17 +30,17 @@ change python/python2 instances to python3
 # orbslam3
     - Pangolin
 
-# build Pangolin
-# RUN cd ORB_SLAM3_NOETIC/Pangolin &&\
-#     mkdir build &&\
-#     cd build &&\
-#     cmake .. &&\
-#     sudo make install
+ build Pangolin
+ RUN cd ORB_SLAM3_NOETIC/Pangolin &&\
+     mkdir build &&\
+     cd build &&\
+     cmake .. &&\
+     sudo make install
 
-# build Thirdparty libs and ORB-SLAM3
-# RUN cd ORB_SLAM3_NOETIC &&\
-#     chmod +x build.sh &&\
-#     ./build.sh
+ build Thirdparty libs and ORB-SLAM3
+ RUN cd ORB_SLAM3_NOETIC &&\
+     chmod +x build.sh &&\
+     ./build.sh
 
 (ORB-SLAM3: Current Frame:1886): dbind-WARNING **: 15:19:33.918: Couldn't connect to accessibility bus: Failed to connect to socket /run/user/1000/at-spi/bus_1: No such file or directory
 
