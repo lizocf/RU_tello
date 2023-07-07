@@ -1,0 +1,16 @@
+<launch>
+  <arg name="vocab_path" value="$(find ORB_SLAM3)../../Vocabulary/ORBvoc.txt" />
+  <arg name="config_path" value="$(find ORB_SLAM3)../../Examples/RGB-D/rgbd_tello.yaml" />
+  <arg name="save_map" value="0"/>
+
+  
+  <node name="orb_slam3_mono" pkg="ORB_SLAM3" type="rgbd" args="$(arg vocab_path) $(arg config_path) $(arg save_map)" output="screen">
+    <remap from="camera/rgb/image_raw" to="packnet/color/image_raw" />
+    <remap from="camera/registered_depth/image_raw" to="packnet/depth/image_raw" />
+
+    <remap from="/orb_slam/fast_planner_pose" to="/nullify" />
+  </node>
+
+
+
+</launch>

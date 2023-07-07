@@ -1,0 +1,2 @@
+08:35:30: OGRE EXCEPTION(6:FileNotFoundException): 'plugins_tools.cfg' file not found! in ConfigFile::load at /build/ogre-next-UFfg83/ogre-next-2.2.5+dfsg3/OgreMain/src/OgreConfigFile.cpp (line 91)
+08:35:30: OGRE EXCEPTION(1:InvalidStateException): Cannot initialise - no render system has been selected. in Root::initialise at /build/ogre-next-UFfg83/ogre-next-2.2.5+dfsg3/OgreMain/src/OgreRoot.cpp (line 747)
