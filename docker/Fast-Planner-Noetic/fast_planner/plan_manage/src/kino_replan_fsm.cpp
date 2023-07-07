@@ -217,11 +217,15 @@ void KinoReplanFSM::execFSMCallback(const ros::TimerEvent& e) {
       replan_pub_.publish(replan_msg);
 
       bool success = callKinodynamicReplan();
-      if (success) {
-        changeFSMExecState(EXEC_TRAJ, "FSM");
-      } else {
-        changeFSMExecState(GEN_NEW_TRAJ, "FSM");
-      }
+      // if (success) {
+      //   changeFSMExecState(EXEC_TRAJ, "FSM");
+      // } else {
+      //   changeFSMExecState(GEN_NEW_TRAJ, "FSM");
+      // }
+      // break;
+      
+      // This is to replan from the current odometry (pose) to the goal point
+      changeFSMExecState(GEN_NEW_TRAJ, "FSM");
       break;
     }
   }
