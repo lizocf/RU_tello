@@ -17,6 +17,8 @@ if [ "$1" == "all" ]; then
     tmux select-window -t 'tello-ros'
     tmux send-keys 'docker exec -it tello-ros bash'
     tmux send-keys Enter
+    tmux send-keys 'export-ros'
+    tmux send-keys Enter
     tmux send-keys 'source-ros'
     tmux send-keys Enter
     tmux send-keys 'source-work'
@@ -41,6 +43,8 @@ if [ "$1" == "all" ]; then
     tmux split-window -v 'fish'
     tmux send-keys 'docker exec -it tello-ros bash'
     tmux send-keys Enter
+    tmux send-keys 'export-ros'
+    tmux send-keys Enter
     tmux send-keys 'source-work'
     tmux send-keys Enter
     tmux send-keys 'roslaunch tello_driver tello_node.launch'
@@ -52,6 +56,8 @@ if [ "$1" == "all" ]; then
     tmux send-keys Enter
     tmux send-keys 'cd packnet_ws && catkin_make'
     tmux send-keys Enter
+    tmux send-keys 'export-ros'
+    tmux send-keys Enter
     tmux send-keys "source-pack"
     tmux send-keys Enter
     tmux send-keys "rosrun packnet_sfm_ros packnet_sfm_node"
@@ -61,6 +67,8 @@ if [ "$1" == "all" ]; then
     tmux split-window -v 'fish'
     tmux send-keys 'docker exec -it tello-ros bash'
     tmux send-keys Enter
+    tmux send-keys 'export-ros'
+    tmux send-keys Enter
     tmux send-keys 'source-work'
     tmux send-keys Enter
     tmux send-keys 'rosrun image_transport republish h264 in:=/tello/image_raw out:=/camera/color/image_raw'
@@ -68,6 +76,8 @@ if [ "$1" == "all" ]; then
 
     tmux select-pane -t 0
     tmux send-keys 'docker exec -it tello-ros bash'
+    tmux send-keys Enter
+    tmux send-keys 'export-ros'
     tmux send-keys Enter
     tmux send-keys 'source-work'
     tmux send-keys Enter
@@ -77,6 +87,8 @@ if [ "$1" == "all" ]; then
     tmux split-window -h 'fish'
     tmux send-keys 'docker exec -it tello-ros bash'
     tmux send-keys Enter
+    tmux send-keys 'export-ros'
+    tmux send-keys Enter
     tmux send-keys 'source-work'
     tmux send-keys Enter
     tmux send-keys 'roslaunch plan_manage tello_kino_replan.launch'
@@ -84,6 +96,8 @@ if [ "$1" == "all" ]; then
     
     tmux split-window -v 'fish'
     tmux send-keys 'docker exec -it tello-ros bash'
+    tmux send-keys Enter
+    tmux send-keys 'export-ros'
     tmux send-keys Enter
     tmux send-keys 'source-work'
     tmux send-keys Enter
@@ -98,6 +112,8 @@ if [ "$1" == "all" ]; then
     tmux new-window -n 'tello-ros'
     tmux select-window -t 'tello-ros'
     tmux send-keys 'docker exec -it tello-ros bash'
+    tmux send-keys Enter
+    tmux send-keys 'export-ros'
     tmux send-keys Enter
     tmux send-keys 'source-ros'
     tmux send-keys Enter

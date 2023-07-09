@@ -73,6 +73,9 @@ RUN apt-get install -y \
         libarmadillo-dev \
         ros-noetic-pcl*
 
+## DRONE_CONTROLLER DEPENDENCIES (lol) ##
+RUN apt install -y ros-noetic-pid
+
 # RUN cd ros_ws/src &&\
 #     git clone https://github.com/stevengj/nlopt.git &&\
 #     cd nlopt &&\

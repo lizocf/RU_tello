@@ -38,6 +38,7 @@ services:
         # - './Fast-Planner:/app/ros_ws/src/Fast-Planner'
         - './Fast-Planner-Noetic:/app/ros_ws/src/Fast-Planner'
         - './ORB-SLAM3/ORB_SLAM3_NOETIC:/app/ros_ws/src/orbslam3'
+        - './drone_controller:/app/ros_ws/src/drone_controller'
         - './packnet_sfm_ros:/app/packnet_ws/src/packnet_sfm_ros'
         # - '/usr/lib/cuda:/usr/lib/cuda'
         - '/dev/input/js0:/dev/input/js0'

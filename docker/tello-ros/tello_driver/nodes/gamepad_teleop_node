@@ -87,14 +87,46 @@ class GamepadState:
         self.RY = msg.axes[3]
         self.RT = msg.axes[13]
     
-    def parse_xbox(self, msg):
-        if len(msg.buttons) != 15 or len(msg.axes) != 8:
+    # def parse_xbox(self, msg):
+    #     if len(msg.buttons) != 15 and len(msg.axes) != 8:
+    #         raise ValueError('Invalid number of buttons (%d) or axes (%d)' % (
+    #             len(msg.buttons), len(msg.axes)))
+    #     self.Select = msg.buttons[10]   # LSB
+    #     self.L3 = msg.buttons[2]        # NO!!!!
+    #     self.R3 = msg.buttons[2]        # NO!!!!
+    #     self.Start = msg.buttons[11]    # RSB
+    #     if msg.axes[7] <= 0:
+    #         self.DU = msg.axes[7]       # DPADU (-)
+    #     if msg.axes[7] >= 0:
+    #         self.DD = msg.axes[7]       # DPADD (+)
+    #     if msg.axes[6] <= 0:
+    #         self.DL = msg.axes[6]       # DPADL (-)
+    #     if msg.axes[6] >= 0:
+    #         self.DR = msg.axes[6]       # DPADR (+)          
+    #     self.L2 = msg.buttons[6]        # LB
+    #     self.R2 = msg.buttons[7]        # RB
+    #     self.L1 = msg.buttons[13]       # JL
+    #     self.R1 = msg.buttons[14]       # JR
+    #     self.Tr = msg.buttons[4]        # Y
+    #     self.Ci = msg.buttons[1]        # B
+    #     self.Cr = msg.buttons[0]        # A
+    #     self.Sq = msg.buttons[3]        # X
+    #     self.Sync = msg.buttons[2]      # NO!!!!
+    #     self.LX = msg.axes[0]
+    #     self.LY = msg.axes[1]
+    #     self.LT = msg.axes[5]           # LT
+    #     self.RX = msg.axes[2]
+    #     self.RY = msg.axes[3]
+    #     self.RT = msg.axes[4]           # RT
+
+    def parse_wired_xbox(self, msg):
+        if len(msg.buttons) != 11 and len(msg.axes) != 8:
             raise ValueError('Invalid number of buttons (%d) or axes (%d)' % (
                 len(msg.buttons), len(msg.axes)))
-        self.Select = msg.buttons[10]   # LSB
-        self.L3 = msg.buttons[2]        # NO!!!!
-        self.R3 = msg.buttons[2]        # NO!!!!
-        self.Start = msg.buttons[11]    # RSB
+        self.Select = msg.buttons[6]   # LSB
+        self.L3 = msg.buttons[8]        # NO!!!!
+        self.R3 = msg.buttons[8]        # NO!!!!
+        self.Start = msg.buttons[5]    # RSB
         if msg.axes[7] <= 0:
             self.DU = msg.axes[7]       # DPADU (-)
         if msg.axes[7] >= 0:
@@ -103,21 +135,21 @@ class GamepadState:
             self.DL = msg.axes[6]       # DPADL (-)
         if msg.axes[6] >= 0:
             self.DR = msg.axes[6]       # DPADR (+)          
-        self.L2 = msg.buttons[6]        # LB
-        self.R2 = msg.buttons[7]        # RB
-        self.L1 = msg.buttons[13]       # JL
-        self.R1 = msg.buttons[14]       # JR
-        self.Tr = msg.buttons[4]        # Y
+        self.L2 = msg.buttons[4]        # LB
+        self.R2 = msg.buttons[5]        # RB
+        self.L1 = msg.buttons[9]       # JL
+        self.R1 = msg.buttons[10]       # JR
+        self.Tr = msg.buttons[3]        # Y
         self.Ci = msg.buttons[1]        # B
         self.Cr = msg.buttons[0]        # A
-        self.Sq = msg.buttons[3]        # X
-        self.Sync = msg.buttons[2]      # NO!!!!
+        self.Sq = msg.buttons[2]        # X
+        self.Sync = msg.buttons[8]      # NO!!!!
         self.LX = msg.axes[0]
         self.LY = msg.axes[1]
-        self.LT = msg.axes[5]           # LT
-        self.RX = msg.axes[2]
-        self.RY = msg.axes[3]
-        self.RT = msg.axes[4]           # RT
+        self.LT = msg.axes[2]           # LT
+        self.RX = msg.axes[3]
+        self.RY = msg.axes[4]
+        self.RT = msg.axes[5]           # RT
 
     def parse(self, msg):
         err = None
@@ -129,8 +161,12 @@ class GamepadState:
             return self.parse_ps3_usb2(msg)
         except ValueError as e:
             err = e
+        # try:
+        #     return self.parse_xbox(msg)
+        # except ValueError as e:
+        #     err = e
         try:
-            return self.parse_xbox(msg)
+            return self.parse_wired_xbox(msg)
         except ValueError as e:
             err = e
         raise err
